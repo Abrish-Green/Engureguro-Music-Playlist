@@ -4,7 +4,7 @@
 
 
 
-#Table of Content
+# Table of Content
 
 <h2><a href="#introduction"> 1. Introduction</a></h2>
 <h3><a href="#project_structure"> 2.Project Structure</a></h3>
