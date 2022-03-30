@@ -7,7 +7,7 @@ const connectDB = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true
     }
-).then((con)=>console.log("Remote Database Connected")).catch((err)=>console.log(err));
+).then((con)=>console.log("Remote Database Connected")).catch((err)=>console.log(err))
 }
 
 module.exports = connectDB
