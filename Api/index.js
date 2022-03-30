@@ -5,9 +5,11 @@ const API = express.Router()
 const port = process.env.PORT
 const connectDB = require('./config/mongodb')
 
-const user = require('./route/user')
+const cookieParser = require("cookie-parser");
 
+const user = require('./route/user')
 app.use(express.json());
+app.use(cookieParser());
 app.use((req,res,next)=>{
   console.log(req.url)
   next()
