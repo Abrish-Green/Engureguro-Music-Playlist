@@ -12,14 +12,16 @@ const UserSchema = new mongoose.Schema({
   bio: String,
   image: String,
   hash: String,
-  salt: String
+  salt: String,
+  resetToken: String
 }, {timestamps: true});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
 
-UserSchema.methods.setPassword = function(password){
+UserSchema.methods.setPassword =  function(password){
     this.salt = crypto.randomBytes(16).toString('hex');
     this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+    
   };
 
 UserSchema.methods.validPassword = function(password) {

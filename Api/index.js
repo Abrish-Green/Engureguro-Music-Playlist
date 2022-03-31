@@ -23,7 +23,10 @@ app.use('/api/v1', API)
 
 API.use('/auth',require('./auth/auth'))
 
-
+API.get("/logout", (req, res) => {
+  res.cookie("jwt_token", "", { maxAge: "1" })
+  res.redirect("/")
+})
 app.listen(port, () => {
   console.log(`Development Port:${port}`)
 })

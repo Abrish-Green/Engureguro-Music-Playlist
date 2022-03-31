@@ -49,6 +49,7 @@ router.post('/login',async(req,res)=>{
 
         if(user[0].hash == inputHash){
             var tempUser = new User()
+            console.log( user[0].hash , user[0].salt)
             tempUser.hash = user[0].hash
             tempUser.salt = user[0].salt
             
@@ -80,7 +81,16 @@ router.post('/login',async(req,res)=>{
 })
 
 // LOGOUT
-
+router.post("/logout", AuthUser, (req, res) => {
+    res.cookie("jwt_token", "", {
+        httpOnly: true,
+        maxAge: 1,
+      });
+    return res.status(200).json({
+        "status":"success",
+        "message":"User Logged out Successfully"
+    })
+  })
 // RESET PASSWORD
 
 
