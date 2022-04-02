@@ -15,18 +15,19 @@ app.use((req,res,next)=>{
   next()
 })
 app.use('/user',user)
-
-connectDB()
+try{
+  connectDB()
+}catch(err){
+  console.log("reconnecting to server wait...")
+  connectDB()
+}
 
 
 app.use('/api/v1', API)
 
 API.use('/auth',require('./auth/auth'))
 
-API.get("/logout", (req, res) => {
-  res.cookie("jwt_token", "", { maxAge: "1" })
-  res.redirect("/")
-})
+
 app.listen(port, () => {
   console.log(`Development Port:${port}`)
 })

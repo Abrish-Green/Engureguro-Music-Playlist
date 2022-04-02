@@ -11,9 +11,9 @@ const UserSchema = new mongoose.Schema({
    type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
   bio: String,
   image: String,
-  hash: String,
-  salt: String,
-  resetToken: String
+  hash: {type:String},
+  salt: {type:String},
+  resetToken: String,
 }, {timestamps: true});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
