@@ -26,14 +26,63 @@ router.post('/sign_up', async(req,res)=>{
             return res.status(202).json(err);
         }
         else{
-            return res.status(200).json({"jwt_token":newUser.generateJWT()})
-             
+            const user = newUser
+            //THE LINK SHOULD BE FRONT-END LINK
+            const link = `${process.env.PUBLIC_URL}/api/v1/auth/verify/user/${user._id}/${user.salt}`
+            try{
+                (async()=>{
+                    await sendEmail(user.email,"Verify Your Account",{username: user.username,link: link,},"../utils/template/verifyAccount.handlebars");
+                        return res.status(200).json({
+                            "status":"success",
+                            "message":`Email has been Sent to ${user.email}`,
+                            "link":link,
+                            "jwt_token": newUser.generateJWT()
+                    })
+            }) ();  
+                }catch(err){
+                        return res.status(500).json({
+                            "status":"fail",
+                            "error": err,
+                            "message":`Email wasn't Sent to ${user.email}`
+                        })
+    }      
         }
     })
 
     //store password
     //save
     
+})
+
+router.get("/verify/user/:userId/:saltToken",async (req,res)=>{
+    const {userId, saltToken } = req.params
+    const user = await User.findOne({"_id":userId}).exec()
+    
+    if(user.verified != null){
+       if(user.verified) return res.status(201).json({
+            "status":"fail",
+            "message":"your account is already verified"
+        })
+    }
+
+
+    
+        if(saltToken !== user.salt){
+            return res.status(201).json({
+                "status":"fail",
+                "message":"Invalid Token"
+            })
+        }
+        await User.updateOne(
+            { _id: user._id },
+            { $set: { verified: true } },
+            {new:true}
+        );
+        
+        return res.status(200).json({
+            "status":"success",
+            "verified":user.verified
+        })
 })
 // LOGIN
 router.post('/login',async(req,res)=>{
@@ -75,7 +124,7 @@ router.post('/login',async(req,res)=>{
     
     return res.status(402).json({
         "status":"failed",
-        "error":"Incorrect Credential"
+        "error":"User Not Found"
     }) 
 
 })
@@ -159,18 +208,14 @@ router.post("/passwordReset/confirm",async(req,res)=>{
             if(!req.body.password) error.push({"password":"password can't be null"})
         }
         
-        if(error.length > 0) return res.status(201).json({
-            "status":"fail",
-            "error":error
-        })
-
-    
+        
         if(req.body.UserId && req.body.token && req.body.password){
             const { UserId, token, password } = req.body
             
             await User.findOne({_id: UserId}, async (err, user) =>{
                 if (err) {
                   console.log(err);
+                  error.push(err)
                 } 
                 if(user.resetToken !== token){
                     return res.status(201).json({
@@ -183,12 +228,12 @@ router.post("/passwordReset/confirm",async(req,res)=>{
                 const hashedPassword = crypto.pbkdf2Sync(password, salt, 10000, 512, 'sha512').toString('hex');
                     await User.updateOne(
                         { _id: user._id },
-                        { $set: {hash: hashedPassword } },
+                        { $set: {hash: hashedPassword,resetToken:"" } },
                       );
                 
                 try{
                     
-                    await sendEmail(user.email,"Password Reset Successful",null,null);
+                    await sendEmail(user.email,"Password Reset Successful",{username: user.username,email:user.email, homePageUrl:`${process.env.PUBLIC_URL}/`,from:`${process.env.PRODUCTION_FROM_EMAIL}`, telephone:"+251-9-XX-XX-XX"},"../utils/template/successfulResetEmail.handlebars");
                         return res.status(200).json({
                             "status":"success",
                             "message":`Email has been Sent to ${user.email}`
@@ -203,9 +248,14 @@ router.post("/passwordReset/confirm",async(req,res)=>{
                       })
                   }  
                   
-              });
+              }).clone()
           
         }
+        if(error.length > 0) return res.status(201).json({
+            "status":"fail",
+            "error":error
+        })
+       
 
 })
 

@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema({
    type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
   bio: String,
   image: String,
+  verified: {type:Boolean, default:false},
   hash: {type:String},
   salt: {type:String},
   resetToken: String,
