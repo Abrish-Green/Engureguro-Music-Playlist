@@ -1,12 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from "react-dom/client";
 import './index.css';
-import App from './App';
+import Header from './Layout/Header/Index';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-    <App />
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Header />}>
+      </Route>
+    </Routes>
+  </BrowserRouter>
 );
 
