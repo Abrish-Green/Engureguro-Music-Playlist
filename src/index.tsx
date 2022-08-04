@@ -6,6 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import App from "./App";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,7 +14,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Header />}>
+      <Route element={<Header />}>
+        <Route index element={<App />} />
       </Route>
     </Routes>
   </BrowserRouter>
