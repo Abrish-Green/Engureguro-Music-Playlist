@@ -25,7 +25,10 @@ export const Header = () => {
               <a className="text-gray-300 hover:bg-gray-700 hover:text-white  px-3 py-2 rounded-md text-md font-medium" href="#">Upload</a>
             </li>
             <li>
-              <a className="text-gray-300 text-gray-100 hover:ring-2 hover:shadow-md px-5 py-2 rounded-md text-md font-medium ring-1" href="#">Login</a>
+              <a className="text-gray-300 text-gray-100 hover:ring-2 hover:shadow-md px-5 py-2 rounded-md text-md font-medium ring-1" href="#">Sign In</a>
+            </li>
+            <li>
+              <a className="text-gray-300 text-gray-100 hover:ring-2 hover:shadow-md px-5 py-2 rounded-md text-md font-medium ring-1" href="#">Sign Up</a>
             </li>
             
             
