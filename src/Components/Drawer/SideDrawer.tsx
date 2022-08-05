@@ -1,11 +1,13 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import ClickAwayListener from '../Shared/ClickAwayListener'
 const SideDrawer = () => {
     const [open, setOpen] = React.useState(true)
   return (
-      <>
+    <>
+      <ClickAwayListener onClickAway={open}>
           <motion.div
-              className="drawer w-[60%] h-[84.5vh] md:hidden border-b-4 border-slate-800 bg-black"
+              className="drawer w-[60%] h-full md:hidden border-b-4 border-slate-800 bg-black fixed z-50"
               initial={{ opacity: 1, x: -400 }}
               animate={{ x: open ? 0 : -400 }}
               transition={{ duration: 0.7 }}
@@ -38,7 +40,7 @@ const SideDrawer = () => {
           
               </div>
           </motion.div>
-      
+      </ClickAwayListener>
     </>
   )
 }
