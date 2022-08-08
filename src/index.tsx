@@ -6,7 +6,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import App from "./App";
+import Home from './pages/Home/Index'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +15,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route element={<Header />}>
-        <Route index element={<App />} />
+        <Route index element={<Home />} />
       </Route>
     </Routes>
   </BrowserRouter>

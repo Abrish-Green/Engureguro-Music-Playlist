@@ -1,5 +1,14 @@
 import { motion } from 'framer-motion';
-const data: Array<Object> = [
+
+interface SearchDataList {
+    data?: SearchData[]
+}
+interface SearchData {
+    title?: string,
+    link?: string 
+}
+
+export const sampleData: SearchData[] = [
     {
         title: "button",
         link: ""
@@ -33,14 +42,18 @@ const data: Array<Object> = [
     }
 ]
 
-interface SearchDataList {
-    data?: SearchData[]
+export const SearchTag = ({title ='Tag', link="url"}: SearchData ) => {
+    return (
+        <>
+            <button className="border border-white py-.5 px-5 m-1 rounded-full hover:ring-1 hover:ring-slate-200 hover:shadow-md hover:shadow-slate-700 transition ease-in-out duration-150 ">{title}</button>
+        </>
+    )
 }
-interface SearchData {
-    title: string,
-    link: string 
-}
-export const SearchTags = ( {data}: SearchDataList) => {
+export const SearchTags = ({ data = [] }: SearchDataList) => {
+    
+    if (data?.length == 0) { 
+            return null
+    }
     return (
         <>
             <motion.div
@@ -48,13 +61,11 @@ export const SearchTags = ( {data}: SearchDataList) => {
                 animate={{ opacity:1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="artist-tags">
-                                <button className="border border-white py-.5 px-5 m-1 rounded-full">button 1</button>
-                                <button className="border border-white py-.5 px-5 m-1 rounded-full">button 1</button>
-                                <button className="border border-white py-.5 px-5 m-1 rounded-full">button 1</button>
-                                <button className="border border-white py-.5 px-5 m-1 rounded-full">button 1</button>
-                                <button className="border border-white py-.5 px-5 m-1 rounded-full">button 1</button>
-                                <button className="border border-white py-.5 px-5 m-1 rounded-full">button 1</button>
-                                
+            
+                {
+                   data && data?.map((tag) => <SearchTag title={tag?.title} link={tag?.link} />)
+                }
+                <SearchTag />
             </motion.div>
         </>
     );
