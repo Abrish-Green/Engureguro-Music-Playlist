@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 export const MusicCard = () => {
   return (
       <>
-          <div className="group">
+          <div className="group hover:cursor-pointer">
           <motion.div
                 initial={{y:-50}}
                 animate={{ y: 0 }}
@@ -23,7 +23,7 @@ export const MusicCard = () => {
                 initial={{y:-50}}
                 animate={{ y: 0 }}
                 key={'music-card'}
-                transition= {{ duration: 0.8 }} className="w-full px-2 mb-3 group-hover:text-black">
+                transition= {{ duration: 0.8 }} className="w-full px-5 mb-3 group-hover:text-black">
               <div className="title text-lg font-bold text-slate-600 group-hover:text-black">Title</div>
               <div className="author text-sm text-slate-600 group-hover:text-black">By Singer</div>
               <div className="tags text-sm text-slate-600 group-hover:text-black">#tags</div>
