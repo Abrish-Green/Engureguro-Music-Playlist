@@ -12,7 +12,7 @@ import { FaDownload } from 'react-icons/fa'
         </div>
         <div className="info h-1/2 flex-col overflow-clip p-2 md:h-full col-span-6">
           <div className="info h-auto border-b inline-flex gap-2 p-2 w-full items-center">
-            <div className="text-3xl"><BsPlayCircle /></div>
+            <div className="text-3xl md:text-5xl"><BsPlayCircle /></div>
             <div className="break-all text-lg font-bold">Like I'm Gonna Lose You
               <div className="text-sm font-normal font-md">By Artist</div>
             </div>
