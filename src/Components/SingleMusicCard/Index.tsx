@@ -6,7 +6,7 @@ import { FaDownload } from 'react-icons/fa'
  const SingleMusicCard = () => {
   return (
     <>
-      <div className="music-card flex-col md:grid md:grid-rows-1 md:grid-cols-8 border w-[70%] h-80 md:h-44 p-2">
+      <div className="music-card flex-col md:grid md:grid-rows-1 md:grid-cols-8 border w-[80%] h-80 md:h-44 p-2">
         <div className="photo h-1/2 md:h-full col-span-2">
             <img src="https://zephyrcreates.com/wp-content/uploads/2019/06/music-covers-WEB-zephyr-02.jpg" alt="" className="w-full h-full object-cover" />
         </div>

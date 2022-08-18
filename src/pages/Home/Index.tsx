@@ -1,5 +1,6 @@
 import React from 'react'
 import LandingBanner from '../../Components/LandingBanner/Index';
+import ListOfFeaturedMusics from '../../Components/ListFeaturedMusic/ListOfFeaturedMusics';
 import PopularComponent from '../../Components/PopularComponent/Index'
  const Index = () => {
   return (
@@ -10,7 +11,11 @@ import PopularComponent from '../../Components/PopularComponent/Index'
               </div>  
               <div className="popular">
                   <PopularComponent />
-              </div>
+        </div>
+        <div className="list-play-list">
+              <ListOfFeaturedMusics />
+        </div>
+
         </div>
       </>
   )

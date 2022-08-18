@@ -8,10 +8,10 @@ export const Header = () => {
       <>
       <div className="w-full h-24 bg-black grid grid-cols-6 border-b-4 border-red-900">
         <div className="left-header border-white col-span-2">
-          <div className="logo p-2 ml-5 inline-flex gap-2 items-center">
+          <a href="/" className="logo p-2 ml-5 inline-flex gap-2 items-center">
             <img src={logo} alt="Logo" className="logo w-14 h-16 md:w-16 md:h-20" id="logo" />
             <div className="site-name md:text-4xl font-logo-font-style font-bold text-white text-2xl"><span className="text-4xl md:text-6xl text-red-400 font-bold">እ</span>ንጉርጉሮ</div>
-          </div>              
+          </a>              
         </div>
         <div className="right-header border-white col-span-4 text-white p-7">
           <ul className="gap-2 float-right hidden md:inline-flex">
