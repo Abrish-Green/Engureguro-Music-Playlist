@@ -3,7 +3,7 @@ import SideDrawer from './Components/Drawer/SideDrawer';
 import LandingBanner from './Components/LandingBanner/Index';
 import ListOfFeaturedMusics from './Components/ListFeaturedMusic/ListOfFeaturedMusics';
 import MusicPlayerController from './Components/MusicPlayerController/MusicPlayerController';
-import Live from './Components/Live/CardList'
+import Live from './pages/Live/Index'
 function App() { 
   return (
     <>
