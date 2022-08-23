@@ -10,13 +10,16 @@ const Card = () => {
             </div>
               <div className="p-2 detail ">
                   <div className="p-2 my-1 text-2xl font-bold break-all border-b-2">Title</div>
-                  <div className="inline-flex items-center gap-2 p-2">
-                      <div className="text-2xl user-icon text-slate-500"><FaUserCircle /></div>
-                      <div className="text-lg font-bold user-name">User Name</div>
-                      <div className="inline-flex items-center gap-1 ml-4 live-listeners">
-                          <span className="text-xl text-slate-700"><BsFillEyeFill /></span>
-                          <span className="text-sm font-bold">0</span>
-                          <span className="text-lg font-semibold text-green-700">, Started 2 min ago</span>
+                  <div className="flex-col md:gap-2 md:inline-flex">
+                      
+                      <div className="inline-flex gap-2">
+                        <div className="text-2xl user-icon text-slate-500"><FaUserCircle /></div>
+                        <div className="text-lg font-bold break-all user-name">User Name</div>
+                      </div>
+                      <div className="inline-flex items-center gap-2 mx-4 live-listeners">
+                          <span className="text-lg font-semibold text-green-700"> Started 2 min ago  </span>
+                          <span className="text-2xl text-slate-700"><BsFillEyeFill /></span>
+                          <span className="font-extrabold break-all text-md text-slate-600">123,324,3443 Watching</span>
                       </div>
                   </div>
                   <div className="p-2 text-lg font-bold tags">
