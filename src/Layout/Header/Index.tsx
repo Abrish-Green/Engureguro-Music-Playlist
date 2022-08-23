@@ -16,7 +16,7 @@ export const Header = () => {
         <div className="right-header border-white col-span-4 text-white p-7">
           <ul className="gap-2 float-right hidden md:inline-flex">
             <li>
-              <a className="text-gray-300 hover:bg-gray-700 hover:text-white  px-3 py-2 rounded-md text-md font-medium" href="#">Live</a>
+              <a className="text-gray-300 hover:bg-gray-700 hover:text-white  px-3 py-2 rounded-md text-md font-medium" href="/live">Live</a>
             </li>
             <li>
               <a className="text-gray-300 hover:bg-gray-700 hover:text-white  px-3 py-2 rounded-md text-md font-medium" href="#">Categories</a>
