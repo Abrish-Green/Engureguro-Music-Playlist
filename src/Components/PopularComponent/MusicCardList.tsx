@@ -75,7 +75,7 @@ const sampleData: MusicCardListProps = {
 const MusicCardList = ({ data = [] }: MusicCardListProps) => {
   return (
       <>
-        <div className="grid grid-cols-1 gap-5 px-24 py-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:px-32 md:py-12">
+        <div className="grid grid-cols-1 gap-5 py-5 px-14 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:px-32 md:py-12">
             {
                   sampleData.data && sampleData.data.map((music_card) => <MusicCard />)
               }  
